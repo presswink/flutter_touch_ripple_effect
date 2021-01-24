@@ -111,7 +111,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> {
           color: widget.backgroundColor == null ? Colors.transparent: widget.backgroundColor,
         ),
          child: Stack(
-           overflow: Overflow.visible,
+           clipBehavior: Clip.antiAlias,
            children: [
              widget.child == null ? throw Exception("touch ripple effect Child == null"): widget.child,
              Container(
