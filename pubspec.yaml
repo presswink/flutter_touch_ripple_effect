@@ -1,6 +1,6 @@
 name: touch_ripple_effect
-description: A new flutter plugin project.
-version: 1.0.0
+description: A new flutter plugin for any flutter widgets to add touch ripple effect.
+version: 1.0.1
 homepage: https://github.com/Adityapanther/flutter-touch-ripple-effect
 
 environment:

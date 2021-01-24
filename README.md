@@ -1,16 +1,21 @@
 # touch_ripple_effect
 
-A new flutter plugin project.
+A new flutter plugin for any flutter widgets to add touch ripple effect.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+1 ) open pubspec.yaml file in project dir and write [touch_ripple_effect:](https://github.com/Adityapanther/flutter-touch-ripple-effect) at below cupertino_icons.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+pubsec.yaml:
+```
+touch_ripple_effect: 1.0.1
+```
 
-=======
+2 ) open command prompt in project dir and run
+
+Command Line:
+```
+flutter pub get
+```
+
+
