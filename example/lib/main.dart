@@ -11,11 +11,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  var _helloRadius = BorderRadius.circular(5);
   
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -32,18 +33,30 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// touch ripple effect implimented
+              
               TouchRippleEffect(
+                borderRadius: _helloRadius,
                 rippleColor: Colors.white60,
-                child: IconButton(iconSize: 24.0, icon: Icon(Icons.search,),color: Colors.pink, onPressed: null),
+                child: Container(
+                  width: 110, 
+                  height: 50, 
+                  alignment: Alignment.center, 
+                  decoration: BoxDecoration(color: Colors.pink, borderRadius: _helloRadius),
+                  child: IconButton(
+                    iconSize: 24.0, 
+                    icon: Icon(Icons.search,color: Colors.white, size: 36,), 
+                    onPressed: null
+                    ),)
               ),
+
+              /// touch Feedback effect implimented.
               TouchFeedback(
                 rippleColor: Colors.blue[200],
                 child: Container(
-                  width: 80,
+                  width: 120,
                   height: 40, 
-                  alignment: Alignment.centerLeft, 
-                  color: Colors.yellow, 
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),), 
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Colors.yellow, borderRadius: BorderRadius.circular(5),), 
                   child: Text(
                     "Hit me !", 
                     style: TextStyle(fontSize: 20, fontWeight:  FontWeight.bold)
