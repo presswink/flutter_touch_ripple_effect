@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class TouchRippleEffect extends StatefulWidget {
+class TouchFeedback extends StatefulWidget {
   final Widget child;
   final Color rippleColor;
   final Color backgroundColor;
   final BorderRadius borderRadius;
   final Duration duration;
   final void Function() onTap;
-  TouchRippleEffect({
+  TouchFeedback({
     this.child, this.rippleColor, this.borderRadius,
     this.backgroundColor, this.duration,
     this.onTap
     });
 
   @override
-  _TouchRippleEffectState createState() => _TouchRippleEffectState();
+  _TouchFeedbackState createState() => _TouchFeedbackState();
 }
 
-class _TouchRippleEffectState extends State<TouchRippleEffect> {
+class _TouchFeedbackState extends State<TouchFeedback> {
   GlobalKey _globalKey = GlobalKey();
   Widget _rippleWidget;
   double _dx;
