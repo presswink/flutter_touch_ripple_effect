@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:touch_ripple_effect/touch_canvas.dart';
+import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: TouchCanvas(
+          child: TouchRippleEffect(
             backgroundColor: Colors.white,
             rippleColor: Colors.black45,
             child: Container(width: 150, color: Colors.pink, alignment: Alignment.center, height: 80,child: Text("Click me", style: TextStyle(color: Colors.black),),),

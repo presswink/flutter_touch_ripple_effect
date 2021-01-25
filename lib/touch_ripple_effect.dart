@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class TouchCanvas extends StatefulWidget {
+class TouchRippleEffect extends StatefulWidget {
   final Widget child;
   final Color rippleColor;
   final Color backgroundColor;
 
-  TouchCanvas({Key key, this.child, this.backgroundColor, this.rippleColor}) : super(key: key);
+  TouchRippleEffect({Key key, this.child, this.backgroundColor, this.rippleColor}) : super(key: key);
 
   @override
-  _TouchCanvasState createState() => _TouchCanvasState();
+  _TouchRippleEffectState createState() => _TouchRippleEffectState();
 }
 
-class _TouchCanvasState extends State<TouchCanvas> with SingleTickerProviderStateMixin {
+class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTickerProviderStateMixin {
   Offset _tapOffset = Offset(0,0);
   GlobalKey _globalKey = GlobalKey();
   Animation<double> _anim;
