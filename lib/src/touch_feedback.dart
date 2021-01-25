@@ -5,11 +5,11 @@ class TouchFeedback extends StatefulWidget {
   final Color rippleColor;
   final Color backgroundColor;
   final BorderRadius borderRadius;
-  final Duration duration;
+  final Duration feedbackDuration;
   final void Function() onTap;
   TouchFeedback({
     this.child, this.rippleColor, this.borderRadius,
-    this.backgroundColor, this.duration,
+    this.backgroundColor, this.feedbackDuration,
     this.onTap
     });
 
