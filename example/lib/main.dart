@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
@@ -28,7 +26,9 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: null
+          child: TouchFeedback(
+
+          )
         ),
       ),
     );
