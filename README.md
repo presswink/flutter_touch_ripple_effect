@@ -2,6 +2,8 @@
 
 A new flutter package for any flutter widgets to add touch ripple effect and touch feedback.
 
+## find package on [pub.dev](https://pub.dev/packages?q=touch_ripple_effect)
+
 ## demo of TouchRippleEffect Widget in search icon Button
 
 ![TouchRippleEffect](./screenshots/touch_ripple_effect.gif)
