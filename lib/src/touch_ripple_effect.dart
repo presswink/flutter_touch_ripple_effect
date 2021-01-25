@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TouchRippleEffect extends StatefulWidget {
-  /// [child] child widget
+  /// [child] user child widget
   /// [rippleColor] touch ripple color of widget
   /// [backgroundColor] of widget container
   /// if you have border of child widget then you should apply [borderRadius]
