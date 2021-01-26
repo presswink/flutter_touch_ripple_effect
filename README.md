@@ -19,7 +19,7 @@ A new flutter package for any flutter widgets to add touch ripple effect and tou
 pubsec.yaml:
 
 ```bash
-touch_ripple_effect: 1.0.1
+touch_ripple_effect: 2.1.1
 ```
 
 2 ) open command prompt in project dir and run
@@ -34,6 +34,8 @@ flutter pub get
 
 properies | details| default value|required|
 ---|---|---|---
+width| TouchRippleEffect widget width size| null| false
+height| TouchRippleEffect widget height size| null| false
 child| child widget in which you want to apply Touch Ripple effect| null| true
 rippleColor| color thats you want to see as a ripple effect| null | true
 onTap| Listen onTap or click of child Widget| null| false

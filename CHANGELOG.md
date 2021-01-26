@@ -1,5 +1,11 @@
 # touch_ripple_effect changelog
 
+## 2.1.1
+
+* width and height properties added to TouchRippleEffect widget
+
+* TouchRippleEffect widget onTap ripple effect not working issue fixed
+
 ## 2.0.0
 
 * New TouchRippleEffect and TouchFeedback Widget added
