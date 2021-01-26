@@ -5,27 +5,62 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+class MyApp extends StatefulWidget {
+MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var _helloRadius = BorderRadius.circular(5);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          child: ListView(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              /// touch ripple effect implimented
+              
               TouchRippleEffect(
-                rippleDuration: Duration(milliseconds: 300),
-                backgroundColor: Colors.blue,
-                rippleColor: Colors.white,
-                child: Container(width: 200, height: 120, color: Colors.yellow, child: Text("hello"),),
-                ),
+                borderRadius: _helloRadius,
+                rippleColor: Colors.white60,
+                child: Container(
+                  width: 110, 
+                  height: 50, 
+                  alignment: Alignment.center, 
+                  decoration: BoxDecoration(color: Colors.pink, borderRadius: _helloRadius),
+                  child: IconButton(
+                    iconSize: 24.0, 
+                    icon: Icon(Icons.search,color: Colors.white, size: 36,), 
+                    onPressed: null
+                    ),)
+              ),
+
+              /// touch Feedback effect implimented.
+              TouchFeedback(
+                rippleColor: Colors.blue[200],
+                child: Container(
+                  width: 120,
+                  height: 40, 
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Colors.yellow, borderRadius: BorderRadius.circular(5),), 
+                  child: Text(
+                    "Hit me !", 
+                    style: TextStyle(fontSize: 20, fontWeight:  FontWeight.bold)
+                    )
+                    ),
+              )
             ],
           ),
+        )
         ),
-      ),
-    );
+      );
   }
 }
 
