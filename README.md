@@ -34,6 +34,8 @@ flutter pub get
 
 properies | details| default value|required|
 ---|---|---|---
+width| TouchRippleEffect widget width size| null| false
+height| TouchRippleEffect widget height size| null| false
 child| child widget in which you want to apply Touch Ripple effect| null| true
 rippleColor| color thats you want to see as a ripple effect| null | true
 onTap| Listen onTap or click of child Widget| null| false

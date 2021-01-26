@@ -6,26 +6,19 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+MyApp({Key key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   var _helloRadius = BorderRadius.circular(5);
-  
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
         body: Container(
           alignment: Alignment.center,
           child: Column(
@@ -70,3 +63,4 @@ class _MyAppState extends State<MyApp> {
       );
   }
 }
+
