@@ -113,7 +113,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
   void _animate(){
 
     ///[Tween] animation initialize to global variable
-    _tweenAnim = Tween(begin: 0, end: widget.width == null ? _mWidth: widget.width + widget.height == null? _mHeight: widget.height);
+    _tweenAnim = Tween(begin: 0, end: widget.width == null ? _mWidth: widget.width*2 + widget.height == null? _mHeight: widget.height*2);
 
     ///adding [_animationController] to [_tweenanim] to animate
     _anim =_tweenAnim.animate(_animationController);

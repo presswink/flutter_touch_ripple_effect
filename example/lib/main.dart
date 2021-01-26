@@ -16,13 +16,9 @@ class MyApp extends StatelessWidget {
           child: ListView(
             children: [
               TouchRippleEffect(
-                width: 200,
-                height: 200,
-                onTap: (){
-                  print("hello ad! ");
-                },
+                rippleDuration: Duration(milliseconds: 300),
                 backgroundColor: Colors.blue,
-                rippleColor: Colors.pink,
+                rippleColor: Colors.white,
                 child: Container(width: 200, height: 120, color: Colors.yellow, child: Text("hello"),),
                 ),
             ],
