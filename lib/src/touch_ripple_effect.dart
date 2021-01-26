@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 
 class TouchRippleEffect extends StatefulWidget {
-  /// [child] user child widget
-  /// [rippleColor] touch ripple color of widget
-  /// [backgroundColor] of widget container
-  /// if you have border of child widget then you should apply [borderRadius]
-  /// [rippleDuration] will be animation duration.
-  /// [onTap] is for user click or tap handle.
   
+  /// child widget [child]
   final Widget child;
+
+  /// touch effect color of widget [rippleColor]
   final Color rippleColor;
+
+  /// TouchRippleEffect widget background color [backgroundColor]
   final Color backgroundColor;
+
+  /// if you have border of child widget then you should apply [borderRadius]
   final BorderRadius borderRadius;
+
+  /// animation duration of touch effect. [rippleDuration]
   final Duration rippleDuration;
+
+  /// user click or tap handle [onTap].
   final void Function() onTap;
 
+  /// TouchRippleEffect widget width size [width]
+  final double width;
+
+  /// TouchRippleEffect widget height size [height]
+  final double height;
+
   TouchRippleEffect({
-    Key key, this.child, this.backgroundColor, this.onTap,
+    Key key, this.child, this.backgroundColor, this.onTap, this.width, this.height,
     this.rippleColor, this.borderRadius, this.rippleDuration,
     }) : super(key: key);
 
@@ -102,7 +113,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
   void _animate(){
 
     ///[Tween] animation initialize to global variable
-    _tweenAnim = Tween(begin: 0, end: _mWidth+_mHeight);
+    _tweenAnim = Tween(begin: 0, end: widget.width == null ? _mWidth: widget.width + widget.height == null? _mHeight: widget.height);
 
     ///adding [_animationController] to [_tweenanim] to animate
     _anim =_tweenAnim.animate(_animationController);
@@ -118,7 +129,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap,
-      onPanStart: (details){
+      onTapDown: (details){
         /// getting tap [localPostion] of user
         var lp = details.localPosition;
         setState(() {
@@ -138,6 +149,8 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
         _animate();
       },
       child: Container(
+        width: widget.width,
+        height: widget.height,
         /// added globalKey for getting child widget size
         key: _globalKey,
         clipBehavior: Clip.antiAlias,
@@ -148,6 +161,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
           borderRadius: widget.borderRadius,
         ),
         child: Stack(
+
           children: [
             /// added child widget of user
             widget.child,
@@ -169,13 +183,14 @@ class _TouchRippleEffectState extends State<TouchRippleEffect> with SingleTicker
 
 
 class RipplePainer extends CustomPainter{
-  /// [Offset] of user tap locations
-  /// [circleRadius] is radius of circle which decide ripple size
-  /// [fillColor] of ripple circle
   
-
+  /// user tap locations [Offset]
   final Offset offset;
+
+  /// radius of circle which will be ripple color size [circleRadius]
   final double circleRadius;
+
+  /// fill color of ripple [fillColor]
   final Color fillColor;
   RipplePainer({this.offset, this.circleRadius, this.fillColor});
 

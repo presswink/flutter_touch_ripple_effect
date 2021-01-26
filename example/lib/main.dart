@@ -5,68 +5,31 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-
-  var _helloRadius = BorderRadius.circular(5);
-  
-  @override
-  void initState() {
-    super.initState();
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
         body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: ListView(
             children: [
-              /// touch ripple effect implimented
-              
               TouchRippleEffect(
-                borderRadius: _helloRadius,
-                rippleColor: Colors.white60,
-                child: Container(
-                  width: 110, 
-                  height: 50, 
-                  alignment: Alignment.center, 
-                  decoration: BoxDecoration(color: Colors.pink, borderRadius: _helloRadius),
-                  child: IconButton(
-                    iconSize: 24.0, 
-                    icon: Icon(Icons.search,color: Colors.white, size: 36,), 
-                    onPressed: null
-                    ),)
-              ),
-
-              /// touch Feedback effect implimented.
-              TouchFeedback(
-                rippleColor: Colors.blue[200],
-                child: Container(
-                  width: 120,
-                  height: 40, 
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.yellow, borderRadius: BorderRadius.circular(5),), 
-                  child: Text(
-                    "Hit me !", 
-                    style: TextStyle(fontSize: 20, fontWeight:  FontWeight.bold)
-                    )
-                    ),
-              )
+                width: 200,
+                height: 200,
+                onTap: (){
+                  print("hello ad! ");
+                },
+                backgroundColor: Colors.blue,
+                rippleColor: Colors.pink,
+                child: Container(width: 200, height: 120, color: Colors.yellow, child: Text("hello"),),
+                ),
             ],
           ),
-        )
         ),
-      );
+      ),
+    );
   }
 }
+
