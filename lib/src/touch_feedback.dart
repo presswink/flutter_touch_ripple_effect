@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 
 class TouchFeedback extends StatefulWidget {
-  /// [child] user child widget
-  /// [rippleColor] touch ripple color of widget
-  /// [backgroundColor] of widget container
-  /// if you have border of child widget then you should apply [borderRadius]
-  /// [feedbackDuration] will be animation duration.
-  /// [onTap] is for user click or tap handle.
+  
 
+  /// user child widget [child]
   final Widget child;
+
+  /// touch feedback color of widget [rippleColor]
   final Color rippleColor;
+
+  /// background color of TouchFeedback widget [backgroundColor]
   final Color backgroundColor;
+
+  /// border radius of TouchFeedback widget [borderRadius]
   final BorderRadius borderRadius;
+
+  ///  feedback animation duration. [feedbackDuration]
   final Duration feedbackDuration;
+
+  /// user click listener or tap handler. [onTap]
   final void Function() onTap;
+
+
   TouchFeedback(
       {this.child,
       this.rippleColor,
@@ -27,16 +35,16 @@ class TouchFeedback extends StatefulWidget {
 }
 
 class _TouchFeedbackState extends State<TouchFeedback> {
-  /// private [_globalKey] global variable initialized
+  // private [_globalKey] global variable initialized
   GlobalKey _globalKey = GlobalKey();
 
-  /// private [_rippleWidget] global variable initialized
+  // private [_rippleWidget] global variable initialized
   Widget _rippleWidget;
 
-  /// user tap private [_dx]  x-axis global variable initalized
+  // user tap private [_dx]  x-axis global variable initalized
   double _dx;
 
-  /// user tap private [_dy]  y-axis global variable initalized
+  // user tap private [_dy]  y-axis global variable initalized
   double _dy;
 
   double _mWidth;
@@ -45,7 +53,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   double _animWidth;
   double _animHeight;
 
-  /// private [_defaultDuration] duration of animation if user not assign
+  // private [_defaultDuration] duration of animation if user not assign
   Duration _defaultDuration = Duration(milliseconds: 200);
 
   void _generateRipple() {
@@ -88,7 +96,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
       // sets child widget width to [_mWidth]
       _mWidth = _globalKey.currentContext.size.width;
 
-      /// sets child widget Height to [_mHeight]
+      // sets child widget Height to [_mHeight]
       _mHeight = _globalKey.currentContext.size.height;
 
       // setting [_mWidth] and [_mHeight] to [_animWidth] and [_animHeight]
