@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TouchFeedback extends StatefulWidget {
-  
-
   /// user child widget [child]
   final Widget child;
 
@@ -20,7 +18,6 @@ class TouchFeedback extends StatefulWidget {
 
   /// user click listener or tap handler. [onTap]
   final void Function() onTap;
-
 
   TouchFeedback(
       {this.child,
@@ -121,12 +118,13 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         // delaying onTap till feedback effect
         Future.delayed(
-          widget.feedbackDuration == null ? _defaultDuration : widget.feedbackDuration,
-          ()=> widget.onTap
-          );
+            widget.feedbackDuration == null
+                ? _defaultDuration
+                : widget.feedbackDuration,
+            () => widget.onTap);
       },
       onTapDown: (taped) {
         _dx = taped.localPosition.dx;
