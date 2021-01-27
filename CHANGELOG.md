@@ -1,5 +1,11 @@
 # touch_ripple_effect changelog
 
+## 2.1.2
+
+* documantation bug fixed fixed
+
+* `onTap` method delayed till ripple effect duration
+
 ## 2.1.1
 
 * width and height properties added to TouchRippleEffect widget
