@@ -71,6 +71,8 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   /// by default value is 0.
   double _animRadiusValue = 0;
 
+  Duration _defaultDuration = Duration(milliseconds: 300);
+
   @override
   void initState() {
     super.initState();
@@ -78,7 +80,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
     _animationController = AnimationController(
         vsync: this,
         duration: widget.rippleDuration == null
-            ? Duration(milliseconds: 300)
+            ? _defaultDuration
             : widget.rippleDuration);
     // animation controller listener added or iitialized
     _animationController.addListener(_update);
@@ -137,7 +139,13 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: (){
+        // delayed onTap till ripple effect
+        Future.delayed(
+          widget.rippleDuration == null ? _defaultDuration: widget.rippleDuration,
+          ()=> widget.onTap
+        );
+      },
       onTapDown: (details) {
         /// getting tap [localPostion] of user
         var lp = details.localPosition;

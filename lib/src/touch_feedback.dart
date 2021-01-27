@@ -85,19 +85,19 @@ class _TouchFeedbackState extends State<TouchFeedback> {
 
   void _setChildSize() {
     setState(() {
-      /// sets child widget width to [_mWidth]
+      // sets child widget width to [_mWidth]
       _mWidth = _globalKey.currentContext.size.width;
 
       /// sets child widget Height to [_mHeight]
       _mHeight = _globalKey.currentContext.size.height;
 
-      /// setting [_mWidth] and [_mHeight] to [_animWidth] and [_animHeight]
+      // setting [_mWidth] and [_mHeight] to [_animWidth] and [_animHeight]
       _animWidth = _mWidth;
       _animHeight = _mHeight;
     });
   }
 
-  /// hide rippleWidget when time-up
+  // hide rippleWidget when time-up
 
   void _timeOut() {
     Future.delayed(
@@ -113,7 +113,13 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: (){
+        // delaying onTap till feedback effect
+        Future.delayed(
+          widget.feedbackDuration == null ? _defaultDuration : widget.feedbackDuration,
+          ()=> widget.onTap
+          );
+      },
       onTapDown: (taped) {
         _dx = taped.localPosition.dx;
         _dy = taped.localPosition.dy;
