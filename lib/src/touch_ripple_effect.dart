@@ -144,8 +144,9 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         Future.delayed(
             widget.rippleDuration == null
                 ? _defaultDuration
-                : widget.rippleDuration,
-            () => widget.onTap);
+                : widget.rippleDuration, () {
+          widget.onTap();
+        });
       },
       onTapDown: (details) {
         // getting tap [localPostion] of user

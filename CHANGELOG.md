@@ -1,5 +1,9 @@
 # touch_ripple_effect changelog
 
+## 2.1.3
+
+* `onTap` method not working issue fixed.
+
 ## 2.1.2
 
 * documantation bug fixed fixed
