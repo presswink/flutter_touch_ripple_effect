@@ -30,6 +30,9 @@ class _MyAppState extends State<MyApp> {
               TouchRippleEffect(
                 borderRadius: _helloRadius,
                 rippleColor: Colors.white60,
+                onTap: (){
+                  print("adi !");
+                },
                 child: Container(
                   width: 110, 
                   height: 50, 
@@ -44,6 +47,9 @@ class _MyAppState extends State<MyApp> {
 
               /// touch Feedback effect implimented.
               TouchFeedback(
+                onTap: (){
+                  print(" I am Aditya");
+                },
                 rippleColor: Colors.blue[200],
                 child: Container(
                   width: 120,

@@ -124,7 +124,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
             widget.feedbackDuration == null
                 ? _defaultDuration
                 : widget.feedbackDuration,
-            () => widget.onTap);
+            () => widget.onTap());
       },
       onTapDown: (taped) {
         _dx = taped.localPosition.dx;
