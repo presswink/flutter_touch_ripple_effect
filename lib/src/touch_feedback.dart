@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class TouchFeedback extends StatefulWidget {
   /// user child widget [child]
-  final Widget child;
+  final Widget? child;
 
   /// touch feedback color of widget [rippleColor]
-  final Color rippleColor;
+  final Color? rippleColor;
 
   /// background color of TouchFeedback widget [backgroundColor]
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// border radius of TouchFeedback widget [borderRadius]
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   ///  feedback animation duration. [feedbackDuration]
-  final Duration feedbackDuration;
+  final Duration? feedbackDuration;
 
   /// user click listener or tap handler. [onTap]
-  final void Function() onTap;
+  final void Function()? onTap;
 
   TouchFeedback(
       {this.child,
@@ -36,19 +36,19 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   GlobalKey _globalKey = GlobalKey();
 
   // private [_rippleWidget] global variable initialized
-  Widget _rippleWidget;
+  Widget? _rippleWidget;
 
   // user tap private [_dx]  x-axis global variable initalized
-  double _dx;
+  double? _dx;
 
   // user tap private [_dy]  y-axis global variable initalized
-  double _dy;
+  double? _dy;
 
-  double _mWidth;
-  double _mHeight;
+  double? _mWidth;
+  double? _mHeight;
 
-  double _animWidth;
-  double _animHeight;
+  double? _animWidth;
+  double? _animHeight;
 
   // private [_defaultDuration] duration of animation if user not assign
   Duration _defaultDuration = Duration(milliseconds: 200);
@@ -65,7 +65,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
               color: widget.rippleColor,
               borderRadius: BorderRadius.circular(5)),
           duration: widget.feedbackDuration != null
-              ? widget.feedbackDuration
+              ? widget.feedbackDuration!
               : _defaultDuration,
           curve: Curves.easeInQuint,
         ),
@@ -79,10 +79,10 @@ class _TouchFeedbackState extends State<TouchFeedback> {
 
   void milisecons() {
     setState(() {
-      for (double i = 0; _mWidth > i; i++) {
+      for (double i = 0; _mWidth! > i; i++) {
         _animWidth = i;
       }
-      for (double i = 0; _mHeight > i; i++) {
+      for (double i = 0; _mHeight! > i; i++) {
         _animHeight = i;
       }
     });
@@ -91,10 +91,10 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   void _setChildSize() {
     setState(() {
       // sets child widget width to [_mWidth]
-      _mWidth = _globalKey.currentContext.size.width;
+      _mWidth = _globalKey.currentContext!.size!.width;
 
       // sets child widget Height to [_mHeight]
-      _mHeight = _globalKey.currentContext.size.height;
+      _mHeight = _globalKey.currentContext!.size!.height;
 
       // setting [_mWidth] and [_mHeight] to [_animWidth] and [_animHeight]
       _animWidth = _mWidth;
@@ -107,7 +107,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   void _timeOut() {
     Future.delayed(
         widget.feedbackDuration != null
-            ? widget.feedbackDuration
+            ? widget.feedbackDuration!
             : _defaultDuration, () {
       setState(() {
         _rippleWidget = null;
@@ -123,8 +123,8 @@ class _TouchFeedbackState extends State<TouchFeedback> {
         Future.delayed(
             widget.feedbackDuration == null
                 ? _defaultDuration
-                : widget.feedbackDuration,
-            () => widget.onTap());
+                : widget.feedbackDuration!,
+            () => widget.onTap!());
       },
       onTapDown: (taped) {
         _dx = taped.localPosition.dx;
@@ -147,13 +147,13 @@ class _TouchFeedbackState extends State<TouchFeedback> {
           children: [
             widget.child == null
                 ? throw Exception("touch ripple effect Child == null")
-                : widget.child,
+                : widget.child!,
             Container(
               width: _mWidth == null ? 10 : _mWidth,
               height: _mHeight == null ? 10 : _mHeight,
               color: Colors.transparent,
               padding: EdgeInsets.fromLTRB(
-                  _dx == null ? 0 : _dx, _dy == null ? 0 : _dy, 0, 0),
+                  _dx == null ? 0 : _dx!, _dy == null ? 0 : _dy!, 0, 0),
               child: _rippleWidget,
             ),
           ],
