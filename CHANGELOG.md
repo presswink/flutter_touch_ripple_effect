@@ -1,5 +1,8 @@
 # touch_ripple_effect changelog
 
+## 2.2.3
+
+* migrated to `null-safety` support.
 ## 2.1.3
 
 * `onTap` method not working issue fixed.
