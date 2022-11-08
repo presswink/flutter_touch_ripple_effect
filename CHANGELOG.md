@@ -1,5 +1,8 @@
 # touch_ripple_effect changelog
 
+## 2.2.4
+* kotlin and gradle version issue fixed ([#12](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/12))
+
 ## 2.2.3
 
 * migrated to `null-safety` support.
