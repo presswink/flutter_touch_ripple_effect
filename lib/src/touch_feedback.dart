@@ -144,6 +144,7 @@ class _TouchFeedbackState extends State<TouchFeedback> {
         ),
         child: Stack(
           clipBehavior: Clip.antiAlias,
+          textDirection: TextDirection.ltr,
           children: [
             widget.child == null
                 ? throw Exception("touch ripple effect Child == null")

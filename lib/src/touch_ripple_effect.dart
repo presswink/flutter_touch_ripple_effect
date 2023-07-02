@@ -185,6 +185,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
           borderRadius: widget.borderRadius,
         ),
         child: Stack(
+          textDirection: TextDirection.ltr,
           children: [
             // added child widget of user
             widget.child!,
