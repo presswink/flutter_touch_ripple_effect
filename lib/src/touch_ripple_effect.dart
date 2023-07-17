@@ -46,7 +46,9 @@ class TouchRippleEffect extends StatefulWidget {
 }
 
 class _TouchRippleEffectState extends State<TouchRippleEffect>
-    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin<TouchRippleEffect> {
+    with
+        SingleTickerProviderStateMixin,
+        AutomaticKeepAliveClientMixin<TouchRippleEffect> {
   // by default offset will be 0,0
   // it will be set when user tap on widget
   Offset _tapOffset = Offset(0, 0);
@@ -84,7 +86,10 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
     super.initState();
     // animation controller initialized
     _animationController = AnimationController(
-        vsync: this, duration: widget.rippleDuration == null ? _defaultDuration : widget.rippleDuration);
+        vsync: this,
+        duration: widget.rippleDuration == null
+            ? _defaultDuration
+            : widget.rippleDuration);
     // animation controller listener added or iitialized
     _animationController.addListener(_update);
   }
@@ -161,7 +166,10 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         }
 
         // delayed onTap till ripple effect
-        Future.delayed(widget.rippleDuration == null ? _defaultDuration : widget.rippleDuration!, () {
+        Future.delayed(
+            widget.rippleDuration == null
+                ? _defaultDuration
+                : widget.rippleDuration!, () {
           widget.onTap!();
         });
       },
@@ -194,7 +202,9 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           // when color == null then color will be transpatent otherwise color will be backgroundColor
-          color: widget.backgroundColor == null ? Colors.transparent : widget.backgroundColor,
+          color: widget.backgroundColor == null
+              ? Colors.transparent
+              : widget.backgroundColor,
 
           // boderRadius of container if user passed
           borderRadius: widget.borderRadius,
@@ -208,8 +218,10 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
               opacity: 0.3,
               child: CustomPaint(
                 // ripplePainter is CustomPainer for circular ripple draw
-                painter:
-                    RipplePainer(offset: _tapOffset, circleRadius: _animRadiusValue, fillColor: widget.rippleColor),
+                painter: RipplePainer(
+                    offset: _tapOffset,
+                    circleRadius: _animRadiusValue,
+                    fillColor: widget.rippleColor),
               ),
             )
           ],
@@ -234,7 +246,9 @@ class RipplePainer extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // throw an [rippleColor == null error] if ripple color is null
     var paint = Paint()
-      ..color = this.fillColor == null ? throw Exception("rippleColor of TouchRippleEffect == null") : this.fillColor!
+      ..color = this.fillColor == null
+          ? throw Exception("rippleColor of TouchRippleEffect == null")
+          : this.fillColor!
       ..isAntiAlias = true;
 
     // drawing canvas based on user click offset,radius and paint
