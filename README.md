@@ -39,6 +39,7 @@ height| TouchRippleEffect widget height size| null| false
 child| child widget in which you want to apply Touch Ripple effect| null| true
 rippleColor| color thats you want to see as a ripple effect| null | true
 onTap| Listen onTap or click of child Widget| null| false
+awaitAnimation| Await the animation to complete onTap| true| false
 rippleDuration| how much time take to display ripple effect| 300 milliseconds| false
 backgroundColor| background color of TouchRippleEffect| transparent| false
 borderRadius|border radius of TouchRippleEffect widget| null| false
