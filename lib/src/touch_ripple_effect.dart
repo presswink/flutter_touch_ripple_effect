@@ -19,6 +19,9 @@ class TouchRippleEffect extends StatefulWidget {
   /// user click or tap handle [onTap].
   final void Function()? onTap;
 
+  /// Await the animation to complete on [onTap]. Defaults to true.
+  final bool awaitAnimation;
+
   /// TouchRippleEffect widget width size [width]
   final double? width;
 
@@ -30,6 +33,7 @@ class TouchRippleEffect extends StatefulWidget {
     this.child,
     this.backgroundColor,
     this.onTap,
+    this.awaitAnimation = true,
     this.width,
     this.height,
     this.rippleColor,
@@ -42,7 +46,9 @@ class TouchRippleEffect extends StatefulWidget {
 }
 
 class _TouchRippleEffectState extends State<TouchRippleEffect>
-    with SingleTickerProviderStateMixin {
+    with
+        SingleTickerProviderStateMixin,
+        AutomaticKeepAliveClientMixin<TouchRippleEffect> {
   // by default offset will be 0,0
   // it will be set when user tap on widget
   Offset _tapOffset = Offset(0, 0);
@@ -52,10 +58,12 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
 
   // animation global variable decleared and
   // type cast is double
-  late Animation<double> _anim;
+  Animation<double>? _anim;
 
   // animation controller global variable decleared
   late AnimationController _animationController;
+
+  bool _isAnimationCompleted = true;
 
   /// width of user child widget
   double _mWidth = 0;
@@ -91,7 +99,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   void _update() {
     setState(() {
       // [_anim.value] setting to [_animRadiusValue] global variable
-      _animRadiusValue = _anim.value;
+      _animRadiusValue = _anim!.value;
     });
     // animation status function calling
     _animStatus();
@@ -99,7 +107,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
 
   // checking animation status is completed
   void _animStatus() {
-    if (_anim.status == AnimationStatus.completed) {
+    if (_anim!.status == AnimationStatus.completed) {
       setState(() {
         _animRadiusValue = 0;
       });
@@ -132,14 +140,31 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
     // resetting [_animationController] before start
     _animationController.reset();
 
+    // Adding [_isAnimationCompleted] flag
+    _isAnimationCompleted = false;
+    updateKeepAlive();
+
     // starting [_animationController] to start animation
-    _animationController.forward();
+    _animationController.forward().whenCompleteOrCancel(() {
+      _isAnimationCompleted = true;
+      updateKeepAlive();
+    });
   }
 
   @override
+  bool get wantKeepAlive => !_isAnimationCompleted;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context); // See AutomaticKeepAliveClientMixin.
+
     return GestureDetector(
       onTap: () {
+        if (!widget.awaitAnimation) {
+          widget.onTap!();
+          return;
+        }
+
         // delayed onTap till ripple effect
         Future.delayed(
             widget.rippleDuration == null
