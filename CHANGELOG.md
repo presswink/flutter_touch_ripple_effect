@@ -1,5 +1,8 @@
 # touch_ripple_effect changelog
 
+## 2.3.0
+* `synchronous ripple effect feature added` ([#16](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/16))
+
 ## 2.2.5 
 *  `No Directionality widget found.` issue fixed ([#12](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/14))
 
