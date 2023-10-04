@@ -54,3 +54,9 @@ onTap| Listen onTap or click of child Widget| null| false
 feedbackDuration| how much time take to display ripple effect| 300 milliseconds| false
 backgroundColor| background color of TouchRippleEffect| transparent| false
 borderRadius|border radius of TouchRippleEffect widget| null| false
+
+
+
+## Contributor
+[@Adityapanther](https://github.com/Adityapanther/)
+[@matejhocevar](https://github.com/matejhocevar)
