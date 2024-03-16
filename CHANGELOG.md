@@ -1,5 +1,9 @@
 # touch_ripple_effect changelog
 
+## 2.4.0
+* `build issue fixed` ([#20](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/20))
+* `git action added` ([#20](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/20))
+
 ## 2.3.0
 * `synchronous ripple effect feature added` ([#16](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/16))
 
