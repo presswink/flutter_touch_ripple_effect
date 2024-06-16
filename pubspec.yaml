@@ -1,7 +1,7 @@
 name: touch_ripple_effect
 description: A new flutter package for any flutter widgets to add touch ripple effect and touch feedback effect.
-version: 2.4.0
-homepage: https://github.com/Adityapanther/flutter-touch-ripple-effect
+version: 2.5.0
+homepage: https://github.com/presswink/flutter_touch_ripple_effect
 
 environment:
   sdk: '>=2.17.0 <4.0.0'

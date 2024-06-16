@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           textDirection: TextDirection.ltr,
           children: [
-            /// touch ripple effect implimented
+            // touch ripple effect implemented
 
             TouchRippleEffect(
                 borderRadius: _helloRadius,
@@ -40,17 +40,28 @@ class _MyAppState extends State<MyApp> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: Colors.pink, borderRadius: _helloRadius),
-                  child: IconButton(
-                      iconSize: 24.0,
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                        size: 36,
-                      ),
-                      onPressed: null),
+                  child: Text("On Click", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
                 )),
 
-            /// touch Feedback effect implimented.
+            // longPress button
+
+            TouchRippleEffect(
+                borderRadius: _helloRadius,
+                rippleColor: Colors.white60,
+                onLongPress: () {
+                  print("adi !");
+                },
+                child: Container(
+                  width: 110,
+                  height: 50,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.pink, borderRadius: _helloRadius),
+                  child: Text("LongPress", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+                )
+            ),
+
+            // touch Feedback effect implemented.
             TouchFeedback(
               onTap: () {
                 print(" I am Aditya");

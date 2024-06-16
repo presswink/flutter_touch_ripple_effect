@@ -28,6 +28,12 @@ class TouchRippleEffect extends StatefulWidget {
   /// TouchRippleEffect widget height size [height]
   final double? height;
 
+  /// [shadow] will add shadow effect to the parent widget
+  final List<BoxShadow>? shadow;
+
+  /// [onLongPress] will handle widget long press touch
+  final void Function()? onLongPress;
+
   TouchRippleEffect({
     Key? key,
     this.child,
@@ -39,6 +45,8 @@ class TouchRippleEffect extends StatefulWidget {
     this.rippleColor,
     this.borderRadius,
     this.rippleDuration,
+    this.shadow,
+    this.onLongPress,
   }) : super(key: key);
 
   @override
@@ -53,14 +61,14 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   // it will be set when user tap on widget
   Offset _tapOffset = Offset(0, 0);
 
-  // globalKey variable decleared
+  // globalKey variable declared
   GlobalKey _globalKey = GlobalKey();
 
-  // animation global variable decleared and
+  // animation global variable declared and
   // type cast is double
   Animation<double>? _anim;
 
-  // animation controller global variable decleared
+  // animation controller global variable declared
   late AnimationController _animationController;
 
   bool _isAnimationCompleted = true;
@@ -68,10 +76,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   /// width of user child widget
   double _mWidth = 0;
 
-  // height of user child widget
-  double _mHeight = 0;
-
-  // tween animation global variable decleared and
+  // tween animation global variable declared and
   // type cast is double
   late Tween<double> _tweenAnim;
 
@@ -90,7 +95,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         duration: widget.rippleDuration == null
             ? _defaultDuration
             : widget.rippleDuration);
-    // animation controller listener added or iitialized
+    // animation controller listener added or initialized
     _animationController.addListener(_update);
   }
 
@@ -111,7 +116,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
       setState(() {
         _animRadiusValue = 0;
       });
-      // stoping animation after completed
+      // stopping animation after completed
       _animationController.stop();
     }
   }
@@ -126,15 +131,9 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   // animation initialize reset and start
   void _animate() {
     // [Tween] animation initialize to global variable
-    _tweenAnim = Tween(
-        begin: 0,
-        end: widget.width == null
-            ? _mWidth
-            : widget.width! * 2 + widget.height! == null
-                ? _mHeight
-                : widget.height! * 2);
+    _tweenAnim = Tween(begin: 0, end: widget.width ?? _mWidth);
 
-    // adding [_animationController] to [_tweenanim] to animate
+    // adding [_animationController] to [_tweenAnim] to animate
     _anim = _tweenAnim.animate(_animationController);
 
     // resetting [_animationController] before start
@@ -160,21 +159,19 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
 
     return GestureDetector(
       onTap: () {
-        if (!widget.awaitAnimation) {
-          widget.onTap!();
-          return;
-        }
-
-        // delayed onTap till ripple effect
-        Future.delayed(
-            widget.rippleDuration == null
-                ? _defaultDuration
-                : widget.rippleDuration!, () {
-          widget.onTap!();
-        });
+       if(widget.onLongPress == null){
+         if (!widget.awaitAnimation) {
+           widget.onTap!();
+         }else {
+           // delayed onTap till ripple effect
+           Future.delayed(widget.rippleDuration ?? _defaultDuration, () {
+                 widget.onTap!();
+               });
+         }
+       }
       },
       onTapDown: (details) {
-        // getting tap [localPostion] of user
+        // getting tap [localPosition] of user
         var lp = details.localPosition;
         setState(() {
           /// setting [Offset] of user tap to [_tapOffset] global variable
@@ -187,11 +184,44 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         // child widget [width] initialize to [_width] global variable
         _mWidth = size.width;
 
-        // child widget [height] initialize to [_height] global variable
-        _mHeight = size.height;
-
         // starting animation
-        _animate();
+        if(widget.onLongPress == null){
+          _animate();
+        }
+
+      },
+      onLongPressDown: (details){
+        var lp = details.localPosition;
+        setState(() {
+          /// setting [Offset] of user tap to [_tapOffset] global variable
+          _tapOffset = Offset(lp.dx, lp.dy);
+        });
+
+        // getting [size] of child widget
+        var size = _globalKey.currentContext!.size!;
+
+        // child widget [width] initialize to [_width] global variable
+        _mWidth = size.width;
+      },
+      onLongPressUp: (){
+        // starting animation
+        if(widget.onTap == null){
+          _animate();
+        }
+      },
+      onLongPress: (){
+        if(widget.onTap == null){
+          if (!widget.awaitAnimation) {
+            widget.onLongPress!();
+          }else {
+            // delayed onTap till ripple effect
+            Future.delayed(
+                widget.rippleDuration ?? _defaultDuration,
+                    () {
+                  widget.onLongPress!();
+                });
+          }
+        }
       },
       child: Container(
         width: widget.width,
@@ -201,12 +231,12 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
         key: _globalKey,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          // when color == null then color will be transpatent otherwise color will be backgroundColor
+          // when color == null then color will be transparent otherwise color will be backgroundColor
           color: widget.backgroundColor == null
               ? Colors.transparent
               : widget.backgroundColor,
 
-          // boderRadius of container if user passed
+          // borderRadius of container if user passed
           borderRadius: widget.borderRadius,
         ),
         child: Stack(
@@ -217,8 +247,8 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
             Opacity(
               opacity: 0.3,
               child: CustomPaint(
-                // ripplePainter is CustomPainer for circular ripple draw
-                painter: RipplePainer(
+                // ripplePainter is CustomPainter for circular ripple draw
+                painter: RipplePainter(
                     offset: _tapOffset,
                     circleRadius: _animRadiusValue,
                     fillColor: widget.rippleColor),
@@ -231,7 +261,7 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
   }
 }
 
-class RipplePainer extends CustomPainter {
+class RipplePainter extends CustomPainter {
   // user tap locations [Offset]
   final Offset? offset;
 
@@ -240,7 +270,7 @@ class RipplePainer extends CustomPainter {
 
   // fill color of ripple [fillColor]
   final Color? fillColor;
-  RipplePainer({this.offset, this.circleRadius, this.fillColor});
+  RipplePainter({this.offset, this.circleRadius, this.fillColor});
 
   @override
   void paint(Canvas canvas, Size size) {

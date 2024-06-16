@@ -16,10 +16,10 @@ A new flutter package for any flutter widgets to add touch ripple effect and tou
 
 1 ) open pubspec.yaml file in project dir and write [touch_ripple_effect:](https://github.com/Adityapanther/flutter-touch-ripple-effect) at below cupertino_icons.
 
-pubsec.yaml:
+pubspec.yaml:
 
 ```bash
-touch_ripple_effect: 2.2.4
+touch_ripple_effect: 2.5.0
 ```
 
 2 ) open command prompt in project dir and run
@@ -32,30 +32,30 @@ flutter pub get
 
 ## properties of TouchRippleEffect Widget
 
-properies | details| default value|required|
----|---|---|---
-width| TouchRippleEffect widget width size| null| false
-height| TouchRippleEffect widget height size| null| false
-child| child widget in which you want to apply Touch Ripple effect| null| true
-rippleColor| color thats you want to see as a ripple effect| null | true
-onTap| Listen onTap or click of child Widget| null| false
-awaitAnimation| Await the animation to complete onTap| true| false
-rippleDuration| how much time take to display ripple effect| 300 milliseconds| false
-backgroundColor| background color of TouchRippleEffect| transparent| false
-borderRadius|border radius of TouchRippleEffect widget| null| false
+| properties      | details                                                                    | default value    | required |
+|-----------------|----------------------------------------------------------------------------|------------------|----------|
+| width           | TouchRippleEffect widget width size                                        | null             | false    |
+| height          | TouchRippleEffect widget height size                                       | null             | false    |
+| child           | child widget in which you want to apply Touch Ripple effect                | null             | true     |
+| rippleColor     | color that's you want to see as a ripple effect                            | null             | true     |
+| onTap           | Listen onTap or click of child Widget  (note: either onTap or onLongPress) | null             | false    |
+| awaitAnimation  | Await the animation to complete onTap                                      | true             | false    |
+| rippleDuration  | how much time take to display ripple effect                                | 300 milliseconds | false    |
+| backgroundColor | background color of TouchRippleEffect                                      | transparent      | false    |
+| borderRadius    | border radius of TouchRippleEffect widget                                  | null             | false    |
+| shadow          | add shadow to ripple widget                                                | null             | false    |
+| onLongPress     | will handle widget long press (note: either onTap or onLongPress)          | null             | false    |
 
 ## properties of TouchFeedback Widget
 
-properies | details| default value|required|
----|---|---|---
-child| child widget in which you want to apply Touch Ripple effect| null| true
-rippleColor| color thats you want to see as a ripple effect| null | true
-onTap| Listen onTap or click of child Widget| null| false
-feedbackDuration| how much time take to display ripple effect| 300 milliseconds| false
-backgroundColor| background color of TouchRippleEffect| transparent| false
-borderRadius|border radius of TouchRippleEffect widget| null| false
-
-
+| properties       | details                                                     | default value    | required |
+|------------------|-------------------------------------------------------------|------------------|----------|
+| child            | child widget in which you want to apply Touch Ripple effect | null             | true     |
+| rippleColor      | color that's you want to see as a ripple effect             | null             | true     |
+| onTap            | Listen onTap or click of child Widget                       | null             | false    |
+| feedbackDuration | how much time take to display ripple effect                 | 300 milliseconds | false    |
+| backgroundColor  | background color of TouchRippleEffect                       | transparent      | false    |
+| borderRadius     | border radius of TouchRippleEffect widget                   | null             | false    |
 
 ## Contributor
 [@Adityapanther](https://github.com/Adityapanther/)

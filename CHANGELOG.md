@@ -1,5 +1,11 @@
 # touch_ripple_effect changelog
 
+## 2.5.0
+* `shadow property added` ([#23](https://github.com/presswink/flutter_touch_ripple_effect/issues/23))
+* `typo issue fixed`
+* `longPress property added` ([#18](https://github.com/presswink/flutter_touch_ripple_effect/issues/18))
+
+
 ## 2.4.0
 * `build issue fixed` ([#20](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/20))
 * `git action added` ([#20](https://github.com/Adityapanther/flutter_touch_ripple_effect/issues/20))
@@ -22,7 +28,7 @@
 
 ## 2.1.2
 
-* documantation bug fixed fixed
+* documentation bug fixed fixed
 
 * `onTap` method delayed till ripple effect duration
 
@@ -39,7 +45,7 @@
 
 ## 1.0.1
 
-* At the place of overflow added clipBeheviour
+* At the place of overflow added clipBehaviour
 * in pubspec.yaml file description added
 
 ## 1.0.0
