@@ -38,10 +38,10 @@ class _TouchFeedbackState extends State<TouchFeedback> {
   // private [_rippleWidget] global variable initialized
   Widget? _rippleWidget;
 
-  // user tap private [_dx]  x-axis global variable initalized
+  // user tap private [_dx]  x-axis global variable initialized
   double? _dx;
 
-  // user tap private [_dy]  y-axis global variable initalized
+  // user tap private [_dy]  y-axis global variable initialized
   double? _dy;
 
   double? _mWidth;
@@ -71,13 +71,13 @@ class _TouchFeedbackState extends State<TouchFeedback> {
         ),
       );
     });
-    milisecons();
+    milliseconds();
     // resetting axis after animation
     _dx = 0;
     _dy = 0;
   }
 
-  void milisecons() {
+  void milliseconds() {
     setState(() {
       for (double i = 0; _mWidth! > i; i++) {
         _animWidth = i;
