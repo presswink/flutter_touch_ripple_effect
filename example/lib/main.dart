@@ -61,6 +61,27 @@ class _MyAppState extends State<MyApp> {
                 )
             ),
 
+            // longPress button
+
+            TouchRippleEffect(
+              shadow: [
+                BoxShadow(color: Colors.grey, blurRadius: 3, offset: Offset(3, 3))
+              ],
+                borderRadius: _helloRadius,
+                rippleColor: Colors.white60,
+                onTap: () {
+                  print("adi !");
+                },
+                child: Container(
+                  width: 110,
+                  height: 50,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.pink, borderRadius: _helloRadius),
+                  child: Text("shadow", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+                )
+            ),
+
             // touch Feedback effect implemented.
             TouchFeedback(
               onTap: () {

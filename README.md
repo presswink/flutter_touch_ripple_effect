@@ -19,7 +19,7 @@ A new flutter package for any flutter widgets to add touch ripple effect and tou
 pubspec.yaml:
 
 ```bash
-touch_ripple_effect: 2.5.0
+touch_ripple_effect: 2.5.1
 ```
 
 2 ) open command prompt in project dir and run

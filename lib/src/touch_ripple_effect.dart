@@ -238,6 +238,9 @@ class _TouchRippleEffectState extends State<TouchRippleEffect>
 
           // borderRadius of container if user passed
           borderRadius: widget.borderRadius,
+
+          // shadow adding
+          boxShadow: widget.shadow
         ),
         child: Stack(
           textDirection: TextDirection.ltr,
