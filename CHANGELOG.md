@@ -1,5 +1,8 @@
 # touch_ripple_effect changelog
 
+## 2.5.2
+* `Deprecated imperative apply of Flutter's Gradle plugins issue fixed`
+
 ## 2.5.0
 * `shadow property added` ([#23](https://github.com/presswink/flutter_touch_ripple_effect/issues/23))
 * `typo issue fixed`
