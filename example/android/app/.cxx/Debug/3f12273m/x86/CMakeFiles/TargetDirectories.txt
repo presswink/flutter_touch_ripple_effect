@@ -1,0 +1,2 @@
+/Users/adityakumar/StudioProjects/flutter_touch_ripple_effect/example/android/app/.cxx/Debug/3f12273m/x86/CMakeFiles/edit_cache.dir
+/Users/adityakumar/StudioProjects/flutter_touch_ripple_effect/example/android/app/.cxx/Debug/3f12273m/x86/CMakeFiles/rebuild_cache.dir

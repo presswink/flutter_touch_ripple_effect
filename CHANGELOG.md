@@ -1,5 +1,10 @@
 # touch_ripple_effect changelog
 
+## 2.5.3
+* `compilesdk set to 35 for android`
+* `some bug fixed`
+
+
 ## 2.5.2
 * `Deprecated imperative apply of Flutter's Gradle plugins issue fixed`
 
