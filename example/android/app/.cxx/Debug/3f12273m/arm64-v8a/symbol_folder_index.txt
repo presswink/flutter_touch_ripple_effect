@@ -1,1 +1,0 @@
-/Users/adityakumar/StudioProjects/flutter_touch_ripple_effect/example/build/app/intermediates/cxx/Debug/3f12273m/obj/arm64-v8a

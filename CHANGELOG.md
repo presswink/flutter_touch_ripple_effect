@@ -1,7 +1,9 @@
 # touch_ripple_effect changelog
+## 3.0.0
+* Converted from plugins to package
 
 ## 2.5.3
-* `compilesdk set to 35 for android`
+* `compile sdk set to 35 for android`
 * `some bug fixed`
 
 
