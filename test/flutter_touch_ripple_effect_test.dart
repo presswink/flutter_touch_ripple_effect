@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:touch_ripple_effect/flutter_touch_ripple_effect.dart';
+import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 void main() {
   testWidgets('testing TouchRippleEffect widget', (tester) async {
